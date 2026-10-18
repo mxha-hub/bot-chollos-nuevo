@@ -13,11 +13,14 @@ def enviar_mensaje(texto):
         "text": texto,
         "parse_mode": "HTML"
     }
-    requests.post(url, json=payload)
+    response = requests.post(url, json=payload)
+    print(f"Respuesta de Telegram: {response.status_code} - {response.text}")
 
 def main():
+    print(f"Canal configurado: {CHANNEL_ID}")
     rss_url = "https://www.chollometro.com/rss"
     feed = feedparser.parse(rss_url)
+    print(f"Entradas encontradas en el RSS: {len(feed.entries)}")
     
     for entry in feed.entries[:3]:
         titulo = entry.title
