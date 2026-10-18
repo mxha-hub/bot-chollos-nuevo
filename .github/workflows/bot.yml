@@ -1,0 +1,28 @@
+name: Bot Chollos Telegram
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar Bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          AMAZON_TAG: ${{ secrets.AMAZON_TAG }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+        run: python main.py
