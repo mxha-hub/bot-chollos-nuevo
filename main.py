@@ -22,7 +22,7 @@ def main():
     feed = feedparser.parse(rss_url)
     print(f"Entradas encontradas en el RSS: {len(feed.entries)}")
     
-    for entry in feed.entries[:3]:
+    for entry in feed.entries[:1]:
         titulo = entry.title
         link = entry.link
         
