@@ -18,7 +18,7 @@ def enviar_mensaje(texto):
 
 def main():
     print(f"Canal configurado: {CHANNEL_ID}")
-    rss_url = "https://www.chollometro.com/rss"
+    rss_url = "https://www.chollometro.com/rss/categorias/electronica"
     feed = feedparser.parse(rss_url)
     print(f"Entradas encontradas en el RSS: {len(feed.entries)}")
     
